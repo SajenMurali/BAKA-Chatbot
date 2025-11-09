@@ -26,8 +26,6 @@ import requests
 import psutil
 import webbrowser
 import urllib.parse
-
-# Try to initialize TTS (pyttsx3). If unavailable, fall back to print-only.
 try:
     import pyttsx3
     TTS_AVAILABLE = True
@@ -58,7 +56,6 @@ def set_voice(gender='female'):
             engine.setProperty('voice', voice.id)
             current_voice = 'male'
             return
-    # Fallback: pick the first voice that mentions the gender or the first voice
     for voice in voices:
         name = getattr(voice, 'name', '') or ''
         if gender.lower() in name.lower():
@@ -89,8 +86,6 @@ def speak(text):
             print(f"[warning] TTS error: {e}. Disabling TTS.")
             TTS_AVAILABLE = False
             engine = None
-
-# System and AI State
 ai_name = "BAKA"
 version = "v1.6.5"
 mode = "offline"
@@ -169,10 +164,11 @@ def main():
             handle_command(command)
     except KeyboardInterrupt:
         speak("Goodbye.")
-
-
 if __name__ == "__main__":
     main()
+
+    
 <img width="695" height="372" alt="image" src="https://github.com/user-attachments/assets/c8d2711b-4173-4620-9353-32b91e1a21a3" />
+
 
 
